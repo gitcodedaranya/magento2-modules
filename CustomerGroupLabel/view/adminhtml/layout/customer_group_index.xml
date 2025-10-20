@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Change page title -->
+        <referenceBlock name="page.title">
+            <arguments>
+                <argument name="title" xsi:type="string">Manage Company</argument>
+            </arguments>
+        </referenceBlock>
+
+        <!-- Change Add New button label -->
+        <referenceBlock name="page.actions.add">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">Add New Company Type</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Customer\Block\Adminhtml\Group\Edit\Form">
+        <plugin name="ime_customer_group_add_fields"
+                type="Ime\CustomerGroupLabel\Plugin\AddFieldsToCustomerGroupForm" />
+    </type>
+    
+
+</config>

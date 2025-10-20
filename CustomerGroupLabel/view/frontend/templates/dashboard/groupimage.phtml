@@ -1,0 +1,33 @@
+<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+//$groupRepository = $objectManager->get(\Magento\Customer\Api\GroupRepositoryInterface::class);
+$GroupFactory = $objectManager->get('\Magento\Customer\Model\GroupFactory');
+$groupid = $customerSession->getCustomer()->getGroupId();
+//$group = $groupRepository->getById($groupid);
+$group = $GroupFactory->create()->load($groupid);
+$storeManager = $objectManager->create('\Magento\Store\Model\StoreManagerInterface');
+$mediaUrl = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+?>
+<div class="dashboard-group-left-image" style="text-align:center; margin-bottom:15px;">
+      <div class="grp-outer-container">
+           <?php if ($groupid && $group->getGroupLogo()!=''){?> <img src="<?php echo $mediaUrl.'customer_group_logo/'.$group->getGroupLogo(); ?>"  alt="Company Logo" style="max-width:100px;" /> <?php }?>
+                <div class="grp-container">
+                    <?php
+                           
+                        if ($groupid){?><div class="grp-name"><?php echo $group->getCode()?></span><?php } 
+                        $customer = $customerSession->getCustomer();
+                        $billing = $customer->getDefaultBillingAddress();
+                        if ($billing):
+                        $countryFactory = $objectManager->create(\Magento\Directory\Model\CountryFactory::class);
+                        $country = $countryFactory->create()->loadByCode($billing->getCountryId());?>
+                        <div class="grp-billing-adr">
+                            <p><?= $billing->getStreetFull() ?></p>
+                            <p><?= $billing->getCity() ?>, <?= $billing->getRegion() ?> - <?= $billing->getPostcode() ?></p>
+                            <p><?= $country->getName() ?></p>
+                            <p class="ph-no"><?= $billing->getTelephone() ?></p>
+                        <?php endif; ?>
+                        </div>
+                </div>
+        </div>
+
+</div>
