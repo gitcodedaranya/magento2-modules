@@ -1,0 +1,1 @@
+Create a folder 'Ime' into /app/code and then copy this folder to 'Ime' folder.
