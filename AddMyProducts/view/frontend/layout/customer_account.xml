@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+      <referenceBlock name="customer.account.order.recent" remove="true"/>
+        <referenceBlock name="customer-account-navigation-compare-link" remove="true" />
+        <referenceBlock name="catalog.compare.sidebar" remove="true" />
+        <referenceBlock name="customer-account-navigation-newsletter-subscriptions-link" remove="true" /> <!-- remove newsletter -->
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true" /><!-- Remove My Downloadable Products link from dashboard sidebar -->
+        
+        <referenceBlock name="customer-account-navigation-my-credit-cards-link" remove="true"/> <!-- Remove Stored Payment Methods link from customer dashboard -->
+        <referenceBlock name="customer-account-navigation-delimiter-1" remove="true"/>
+        <referenceBlock name="customer-account-navigation-delimiter-2" remove="true"/>
+
+         <!-- Remove Reorder link from left navigation -->
+        <referenceBlock name="customer-account-navigation-reorder" remove="true" />
+
+        <!-- Optional: remove the "Reorder" block if it exists in other areas -->
+        <referenceBlock name="sales.reorder.sidebar" remove="true" />
+        
+        <!-- Change Wishlist menu label in customer account navigation -->
+        <referenceBlock name="customer_account_navigation">
+            <arguments>
+                <argument name="label" xsi:type="string">My Products</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>
