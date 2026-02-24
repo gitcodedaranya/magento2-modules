@@ -1,0 +1,49 @@
+<?php  $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $mediaUrl = $block->getUrl('media/');
+    $categories = $block->getCategories();
+    if(count($categories)>0):
+?>
+<h3>Browse Our Catalog</h3>
+<div class="subcategory-wrapper">
+    
+   <?php $categoryRepository = $objectManager->get(\Magento\Catalog\Api\CategoryRepositoryInterface::class);
+        foreach ($categories as $category): 
+        $categoryObj = $categoryRepository->get($category->getId());
+        // echo $category->getName()." CImg: ".$category->getImage();
+        $getImageUrl = $categoryObj->getImageUrl();
+        
+        if($getImageUrl==''){
+            $cat_img_path = $mediaUrl.'catalog/category/Faded_Logo.jpg';
+        } else {
+            $cat_img_path =  $getImageUrl;
+            
+        }?>
+        <div class="category-box">
+            <a href="<?= $categoryObj->getUrl() ?>">
+                <img src="<?php echo $cat_img_path?>" />
+            </a>
+           <p><?= $categoryObj->getName() ?></p>
+        </div>
+    <?php endforeach; ?>
+
+</div>
+
+<style>
+.subcategory-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.category-box {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 29%;
+    border-radius: 8px;
+}
+.category-box p {
+    text-align:center;
+   color:var(--orange);
+}
+</style>
+ <?php endif; ?>
