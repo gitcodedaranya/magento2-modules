@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+      <head> 
+        <css src="Ime_AddDomain::css/adddomain.css"/>
+        <script src="Ime_AddDomain::js/adddomain.js"/>
+      </head>
+
+    <body>
+    <referenceContainer name="content">
+        <block class="Magento\Backend\Block\Template" name="adddomain_content" template="Ime_AddDomain::adddomain.phtml"/>
+        <!-- <uiComponent name="adddomain_form"/> -->
+    </referenceContainer>
+    </body>
+
+</page>

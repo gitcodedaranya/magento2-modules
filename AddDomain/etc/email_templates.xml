@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+
+    <template id="admin_customer_register_email"
+              label="Admin Notification: New Customer Registration"
+              file="admin_customer_register.html"
+              type="html"
+              module="Ime_AddDomain"
+              area="frontend"/>
+</config>

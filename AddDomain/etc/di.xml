@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+        
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+    <plugin name="vendor_save_is_approve" type="Ime\AddDomain\Plugin\SaveCustomerAttribute" />
+</type>
+<type name="Magento\Customer\Api\AccountManagementInterface">
+    <plugin name="block_unapproved_customers" type="Ime\AddDomain\Plugin\CustomerLoginValidation" />
+</type>
+
+
+</config>
+

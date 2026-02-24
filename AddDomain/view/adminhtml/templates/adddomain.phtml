@@ -1,0 +1,59 @@
+<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $auth = $objectManager->get('\Magento\Backend\Model\Auth');
+    if ($auth->isLoggedIn()) {
+        $admin_user_id = $auth->getUser()->getId();
+        $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+        $conn = $resource->getConnection();
+        $ime_customer_domain = $resource->getTableName('ime_customer_domain');
+        $seldetails = "Select * FROM ".$ime_customer_domain." Where admin_user_id=".$admin_user_id;
+        $Rows = $conn->fetchAll($seldetails);
+?>
+<div class="adddomain-form">
+    <form action="<?php echo $block->getUrl('createdomain/index/savedomain', ['_secure' => $this->getRequest()->isSecure()]) ?>" enctype="multipart/form-data" method="post">
+    <?php echo $block->getBlockHtml('formkey')?>
+    <div class="wk-mp-page-title page-title top-button-list">
+        <button id="back" onclick="window.location.href='<?php echo $block->getUrl('customer/index', ['_secure' => $this->getRequest()->isSecure()]) ?>';" title="Back" type="button" class="action-default scalable back">
+            <span>Back</span>
+        </button>
+        <button class="button wk-mp-btn" title="<?php echo __('Save') ?>" type="submit" id="save-btn">
+            <span><span><?php echo __('Save') ?></span></span>
+        </button>
+	</div>
+    <div class="table-wrapper">
+        <table class="data table border wk-mp-list-table wk-mp-list-container-table" cellspacing="0">
+            <thead>
+                <tr class="wk-content">
+                    
+                    <th class="wk-check-first-td"><span>Domains</span></th>
+                    <th class="wk-list-th-display"><span>Action</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if(count($Rows)>0){
+                        foreach($Rows as $Row){?>
+                            <tr class="wk-row-view ">
+                                <td><input type="text" value="<?php echo  $Row['domain_name']?>" name="domain[]"/></td>
+                                <td class=""><button class="btn delete-fld" type="button">Delete</button></td>
+                            </tr>
+                <?php   }
+                    } else { ?>
+                            <tr class="wk-row-view ">
+                                <td><input type="text" value="" name="domain[]"/></td>
+                                <td class=""><button class="btn delete-fld" type="button">Delete</button></td>
+                             </tr>
+                    
+                    <?php } ?>
+                
+                 
+                <tr>
+                    <td><button class="btn add_more_button" type="button"> Add More</button></td>
+                    <td></td>
+                    
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</form>
+</div>
+<?php }?>
