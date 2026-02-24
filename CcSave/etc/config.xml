@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/config.xsd">
+    <default>
+        <payment>
+            <ccsave>
+                <active>1</active>
+                <model>Ime\CcSave\Model\PaymentMethod</model>
+                <title>Credit Card (Saved)</title>
+                <order_status>pending</order_status>
+                <allowspecific>0</allowspecific>
+                <sort_order>10</sort_order>
+            </ccsave>
+        </payment>
+    </default>
+</config>
